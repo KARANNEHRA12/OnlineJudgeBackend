@@ -1,15 +1,15 @@
-package com.futureworks.juge.controller;
+package com.futureworks.judge.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.futureworks.juge.bean.LoginBean;
-import com.futureworks.juge.contants.Constant;
-import com.futureworks.juge.exception.JugeException;
-import com.futureworks.juge.http.JugeResponser;
-import com.futureworks.juge.implementation.JugeUserImpl;
+import com.futureworks.judge.bean.LoginBean;
+import com.futureworks.judge.contants.Constant;
+import com.futureworks.judge.exception.JudgeException;
+import com.futureworks.judge.http.JudgeResponser;
+import com.futureworks.judge.implementation.JudgeUserImpl;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,18 +18,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 @CrossOrigin
 @RestController
 @RequestMapping("/user")
-public class jugeUserController {
+public class judgeUserController {
 
     @Autowired
-    private JugeUserImpl userImpl;
+    private JudgeUserImpl userImpl;
 
     @PostMapping("/login")
-    private JugeResponser login(@RequestBody LoginBean bean){
-        JugeResponser responser = new JugeResponser();
+    private JudgeResponser login(@RequestBody LoginBean bean){
+        JudgeResponser responser = new JudgeResponser();
         try{
             responser.setStatus(Constant.STATUS.SUCCESS);
             responser.setData(userImpl.loginInit(bean.getUsername(),bean.getPassword())); 
-        }catch(JugeException e){
+        }catch(JudgeException e){
             System.out.println(e.getMessage());
             responser.setStatus(Constant.STATUS.FAILED);
             responser.setMessage(e.getMessage());
@@ -38,12 +38,12 @@ public class jugeUserController {
     }
 
     @PostMapping("/user")
-    public JugeResponser getUserDetailJugeResponser(@RequestBody String id) {
-        JugeResponser responser = new JugeResponser();
+    public JudgeResponser getUserDetailJugeResponser(@RequestBody String id) {
+        JudgeResponser responser = new JudgeResponser();
             try{
                 responser.setStatus(Constant.STATUS.SUCCESS);
                 responser.setData(userImpl.getUserDetail(id)); 
-            }catch(JugeException e){
+            }catch(JudgeException e){
                 System.out.println(e.getMessage());
                 responser.setStatus(Constant.STATUS.FAILED);
                 responser.setMessage(e.getMessage());

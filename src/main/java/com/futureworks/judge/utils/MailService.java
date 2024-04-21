@@ -1,4 +1,4 @@
-package com.futureworks.juge.utils;
+package com.futureworks.judge.utils;
 
 import org.springframework.stereotype.Component;
 

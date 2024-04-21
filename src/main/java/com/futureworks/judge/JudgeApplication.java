@@ -1,13 +1,13 @@
-package com.futureworks.juge;
+package com.futureworks.judge;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class JugeApplication {
+public class JudgeApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(JugeApplication.class, args);
+		SpringApplication.run(JudgeApplication.class, args);
 	}
 
 }

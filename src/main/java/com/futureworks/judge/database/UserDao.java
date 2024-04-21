@@ -1,9 +1,9 @@
-package com.futureworks.juge.database;
+package com.futureworks.judge.database;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.futureworks.juge.bean.UserDetail;
+import com.futureworks.judge.bean.UserDetail;
 
 
 @Repository

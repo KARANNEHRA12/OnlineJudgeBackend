@@ -1,16 +1,16 @@
-package com.futureworks.juge.http;
+package com.futureworks.judge.http;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class JugeResponser implements java.io.Serializable  {
+public class JudgeResponser implements java.io.Serializable  {
     
     private int status;
     private int errorCode;
     private Object Data;
     private String msg;
 
-    public JugeResponser(
+    public JudgeResponser(
         int status,
         int errorCode,
         Object Data,
@@ -22,14 +22,14 @@ public class JugeResponser implements java.io.Serializable  {
         this.msg = msg;
     }
     
-    public JugeResponser(JugeResponser res) {
+    public JudgeResponser(JudgeResponser res) {
         this.status = res.getStatus();
         this.errorCode = res.getErrorCode();
         this.Data = res.getData();
         this.msg = res.getMessage();
     }
 
-    public JugeResponser() {
+    public JudgeResponser() {
     }
 
     public int getStatus() {

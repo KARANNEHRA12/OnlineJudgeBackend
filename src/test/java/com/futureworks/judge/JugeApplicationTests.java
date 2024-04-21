@@ -1,4 +1,4 @@
-package com.futureworks.juge;
+package com.futureworks.judge;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

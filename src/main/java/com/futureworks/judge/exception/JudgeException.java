@@ -1,15 +1,15 @@
-package com.futureworks.juge.exception;
+package com.futureworks.judge.exception;
 
-public class JugeException extends Exception{
+public class JudgeException extends Exception{
 
     private String msg;
     private Integer errorCode;
 
-    public JugeException(String msg, Integer errorCode){
+    public JudgeException(String msg, Integer errorCode){
 
     }
 
-    public JugeException(String msg){
+    public JudgeException(String msg){
 
     }
 

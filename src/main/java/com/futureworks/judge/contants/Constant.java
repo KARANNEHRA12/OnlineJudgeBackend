@@ -1,4 +1,4 @@
-package com.futureworks.juge.contants;
+package com.futureworks.judge.contants;
 
 public class Constant {
     public static class STATUS{

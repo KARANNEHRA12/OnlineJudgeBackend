@@ -1,4 +1,4 @@
-package com.futureworks.juge.bean;
+package com.futureworks.judge.bean;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

@@ -1,4 +1,4 @@
-package com.futureworks.juge.bean;
+package com.futureworks.judge.bean;
 
 import org.apache.tomcat.util.codec.binary.Base64;
 
