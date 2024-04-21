@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.futureworks.juge.bean.LoginBean;
 import com.futureworks.juge.contants.Constant;
 import com.futureworks.juge.exception.JugeException;
 import com.futureworks.juge.http.JugeResponser;
@@ -23,9 +24,16 @@ public class jugeUserController {
     private JugeUserImpl userImpl;
 
     @PostMapping("/login")
-    private JugeResponser login(){
+    private JugeResponser login(@RequestBody LoginBean bean){
         JugeResponser responser = new JugeResponser();
-
+        try{
+            responser.setStatus(Constant.STATUS.SUCCESS);
+            responser.setData(userImpl.loginInit(bean.getUsername(),bean.getPassword())); 
+        }catch(JugeException e){
+            System.out.println(e.getMessage());
+            responser.setStatus(Constant.STATUS.FAILED);
+            responser.setMessage(e.getMessage());
+        }
         return responser;
     }
 

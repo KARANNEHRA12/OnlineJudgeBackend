@@ -22,4 +22,12 @@ public class JugeUserImpl {
         else throw new JugeException("No data found",Constant.ERROR_CODE.DATABASE_ERROR);
     }
 
+    public UserDetail loginInit(String password,String userName) throws JugeException{
+        UserDetail user = userDao.findByUserNameAndPassword(userName,password);
+        //Todo inti seesion id and otp
+        if(user != null && "".equalsIgnoreCase(user.getUserName()))
+            return user;
+        else throw new JugeException("No data found",Constant.ERROR_CODE.DATABASE_ERROR);
+    }
+
 }
