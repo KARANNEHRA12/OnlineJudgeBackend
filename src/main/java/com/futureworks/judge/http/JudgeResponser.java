@@ -66,7 +66,7 @@ public class JudgeResponser implements java.io.Serializable  {
     
 
     public String sendResponse(){
-        Map<String,Object> map = new HashMap();
+        Map<String,Object> map = new HashMap<String,Object>();
         map.put("status", this.getStatus());
         map.put("error_code", this.getErrorCode());
         map.put("message", this.getMessage());

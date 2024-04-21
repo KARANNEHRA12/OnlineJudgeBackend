@@ -1,6 +1,6 @@
 package com.futureworks.judge.bean;
 
-import org.apache.tomcat.util.codec.binary.Base64;
+import java.util.Base64;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,9 +14,9 @@ public class LoginBean {
     private String password;
 
     private void setEncPassword(String password){
-        this.password = Base64.encodeBase64String(password.getBytes());
+        this.password = Base64.getEncoder().encodeToString(password.getBytes());
     }
     public String getDecPassword(){
-        return Base64.decodeBase64(password).toString();
+        return Base64.getDecoder().decode(password).toString();
     }
 }

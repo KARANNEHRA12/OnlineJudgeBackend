@@ -1,5 +1,7 @@
 package com.futureworks.judge.bean;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,7 +13,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
+//@Entity// use this for realation base db
+@Document("OTP_Validation")
 public class OtpSession {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

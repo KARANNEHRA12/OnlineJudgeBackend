@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.futureworks.judge.bean.LoginBean;
+import com.futureworks.judge.bean.UserPojo;
 import com.futureworks.judge.contants.Constant;
 import com.futureworks.judge.exception.JudgeException;
 import com.futureworks.judge.http.JudgeResponser;
@@ -33,6 +34,7 @@ public class judgeUserController {
             System.out.println(e.getMessage());
             responser.setStatus(Constant.STATUS.FAILED);
             responser.setMessage(e.getMessage());
+            responser.setErrorCode(Constant.ERROR_CODE.DATABASE_ERROR);
         }
         return responser;
     }
@@ -47,8 +49,24 @@ public class judgeUserController {
                 System.out.println(e.getMessage());
                 responser.setStatus(Constant.STATUS.FAILED);
                 responser.setMessage(e.getMessage());
+                responser.setErrorCode(Constant.ERROR_CODE.DATABASE_ERROR);
             }
         return responser;
     }
     
+    @PostMapping("/AddUser")
+    public JudgeResponser setUser(@RequestBody UserPojo user) {
+        JudgeResponser responser = new JudgeResponser();
+            try{
+                responser.setStatus(Constant.STATUS.SUCCESS);
+                userImpl.setUser(user);
+                responser.setData(true); 
+            }catch(JudgeException e){
+                System.out.println(e.getMessage());
+                responser.setStatus(Constant.STATUS.FAILED);
+                responser.setMessage(e.getMessage());
+                responser.setErrorCode(Constant.ERROR_CODE.DATABASE_ERROR);
+            }
+        return responser;
+    }
 }

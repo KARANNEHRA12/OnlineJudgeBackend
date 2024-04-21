@@ -8,5 +8,5 @@ import com.futureworks.judge.bean.UserDetail;
 
 @Repository
 public interface UserDao extends JpaRepository<UserDetail,String>{
-    UserDetail findByUserNameAndPassword(String userName, String password);
+    UserDetail findByUserName(String userName);
 }

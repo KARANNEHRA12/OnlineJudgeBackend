@@ -4,30 +4,44 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.futureworks.judge.bean.UserDetail;
+import com.futureworks.judge.bean.UserPojo;
 import com.futureworks.judge.contants.Constant;
 import com.futureworks.judge.database.UserDao;
+import com.futureworks.judge.database.UserRepo;
 import com.futureworks.judge.exception.JudgeException;
 
 @Component
 public class JudgeUserImpl {
     
-    @Autowired
-    private UserDao userDao;
+    // @Autowired
+    // private UserDao userDao;
 
-    public UserDetail getUserDetail(String id) throws JudgeException {
-        UserDetail user = userDao.findById(id).get();
+    @Autowired
+    private UserRepo userDao;
+
+    public UserPojo getUserDetail(String id) throws JudgeException {
+        UserPojo user = userDao.findById(id).get();
 
         if(user != null && "".equalsIgnoreCase(user.getUserName()))
             return user;
         else throw new JudgeException("No data found",Constant.ERROR_CODE.DATABASE_ERROR);
     }
 
-    public UserDetail loginInit(String password,String userName) throws JudgeException {
-        UserDetail user = userDao.findByUserNameAndPassword(userName,password);
+    public UserPojo loginInit(String password,String userName) throws JudgeException {
+        UserPojo user = userDao.findByUserName(userName);
+
         //Todo inti seesion id and otp
-        if(user != null && "".equalsIgnoreCase(user.getUserName()))
+        if(user != null && "".equalsIgnoreCase(user.getUserName()) && password.equals(user.getDecPassword()))
             return user;
         else throw new JudgeException("No data found",Constant.ERROR_CODE.DATABASE_ERROR);
+    }
+
+    public void setUser(UserPojo user) throws JudgeException {
+        try{
+                userDao.save(user);
+        }catch(Exception exception){
+            throw new JudgeException(exception.getMessage());
+        }
     }
 
 }
