@@ -1,8 +1,9 @@
 package com.futureworks.judge.bean;
 
+import java.util.List;
+
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -10,16 +11,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Document
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-//@Entity// use this for realation base db
-@Document("OTP_Validation")
-public class OtpSession {
+public class TestCaseDetail {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private String session;
-    private String otp;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private String _id;
 
-    private String logoutTime;
+    private List<String> testCase;
+    private List<String> testResult;
 }

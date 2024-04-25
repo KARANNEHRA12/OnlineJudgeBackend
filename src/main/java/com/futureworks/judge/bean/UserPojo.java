@@ -4,7 +4,6 @@ import java.util.Base64;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -25,7 +24,7 @@ public class UserPojo {
     private String token;
     private String type;
     
-    private void setEncPassword(String password){
+    public void setEncPassword(String password){
         this.password = Base64.getEncoder().encodeToString(password.getBytes());
     }
     public String getDecPassword(){

@@ -1,6 +1,7 @@
 package com.futureworks.judge.bean;
 
 import java.util.Base64;
+import java.util.List;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -19,13 +20,16 @@ import lombok.NoArgsConstructor;
 public class UserDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
+    private String _id;
     private String userId;
     private String userName;
     private String password;
     private String token;
     private String type;
+    private List<String> queAttempted;
+    private List<String> queCompleted;
     
-    private void setEncPassword(String password){
+    public void setEncPassword(String password){
         this.password = Base64.getEncoder().encodeToString(password.getBytes());
     }
     public String getDecPassword(){

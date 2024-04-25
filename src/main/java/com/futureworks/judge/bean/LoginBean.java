@@ -13,7 +13,7 @@ public class LoginBean {
     private String username;
     private String password;
 
-    private void setEncPassword(String password){
+    public void setEncPassword(String password){
         this.password = Base64.getEncoder().encodeToString(password.getBytes());
     }
     public String getDecPassword(){

@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 @CrossOrigin
 @RestController
 @RequestMapping("/user")
-public class judgeUserController {
+public class JudgeUserController {
 
     @Autowired
     private JudgeUserImpl userImpl;
