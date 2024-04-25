@@ -15,6 +15,7 @@ public class QueDetail {
     @Id
     private String _id;
     private String que;
+    private String name;
     private int level;
     private TestCaseDetail testCase; 
 }
